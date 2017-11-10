@@ -1,12 +1,13 @@
 import fetch from '@/utils/fetch'
+import md5 from 'md5'
 
 export function login(username, password) {
   return fetch({
-    url: '/user/login',
+    url: '/users/login',
     method: 'post',
     data: {
       username,
-      password
+      password: md5(password)
     }
   })
 }
