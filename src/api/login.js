@@ -12,17 +12,16 @@ export function login(username, password) {
   })
 }
 
-export function getInfo(token) {
+export function getInfo() {
   return fetch({
-    url: '/user/info',
-    method: 'get',
-    params: { token }
+    url: '/users/info',
+    method: 'get'
   })
 }
 
 export function logout() {
   return fetch({
-    url: '/user/logout',
+    url: '/users/logout',
     method: 'post'
   })
 }

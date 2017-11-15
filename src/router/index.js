@@ -37,15 +37,6 @@ export const constantRouterMap = [
     ]
   },
 
-  {
-    path: '/table',
-    component: Layout,
-    redirect: '/table/index',
-    icon: 'tubiao',
-    noDropdown: true,
-    children: [{ path: 'index', name: 'Table', component: _import('table/index'), meta: { role: ['admin'] }}]
-  },
-
   { path: '*', redirect: '/404', hidden: true }
 ]
 
