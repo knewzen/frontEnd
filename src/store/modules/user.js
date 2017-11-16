@@ -46,7 +46,7 @@ const user = {
         getInfo().then(response => {
           const data = response.data
           commit('SET_NAME', data.nickname)
-          // commit('SET_ROLES', data.role)
+          commit('SET_ROLES', 'admin')
           commit('SET_AVATAR', data.avatar || 'https://avatars1.githubusercontent.com/u/18207997?s=460&v=4')
           resolve(response)
         }).catch(error => {

@@ -9,8 +9,6 @@ const service = axios.create({
   timeout: 15000                  // 请求超时时间
 })
 
-console.log('api的base_url为：', process.env.BASE_API)
-
 // request拦截器
 service.interceptors.request.use(config => {
   if (store.getters.token) {

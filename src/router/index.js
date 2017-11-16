@@ -33,7 +33,8 @@ export const constantRouterMap = [
     name: 'Example',
     icon: 'zujian',
     children: [
-      { path: 'index', name: 'Form', icon: 'zonghe', component: _import('page/form') }
+      { path: 'index', name: 'Form', icon: 'zonghe', component: _import('page/form') },
+      { path: 'blog', name: 'blog', icon: 'zonghe', component: _import('page/writeBlog') }
     ]
   },
 
