@@ -73,9 +73,12 @@ export default {
             overflow-y: scroll;
         }
         .main-container {
-            min-height: 100%;
+            height: 100%;
             transition: all .28s ease-out;
+            padding-top: 50px;
             margin-left: 180px;
+            position: relative;
+            z-index:1;
         }
     }
 </style>

@@ -50,6 +50,10 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
     .navbar {
+      position:absolute;
+      top: 0;
+      left:0;
+      width: 100%;
         height: 50px;
         line-height: 50px;
         border-radius: 0px !important;

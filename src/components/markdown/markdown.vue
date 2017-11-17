@@ -280,7 +280,14 @@
 </script>
 
 <style lang="scss">
-    
+    html , body {
+        min-height: 100%;
+        #app {
+            height: 100%;
+        }
+    }
+    @import "../../styles/reset.css";
+
     /*引入github的markdown样式文件*/
     
     @import "../../styles/github-markdown.css";

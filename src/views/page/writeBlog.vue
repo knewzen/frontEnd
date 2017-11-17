@@ -1,7 +1,5 @@
 <template>
-  <div class="blog">
-    <vueMarkDown></vueMarkDown>
-  </div>
+  <vueMarkDown></vueMarkDown>
 </template>
 
 <script>
