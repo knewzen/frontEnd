@@ -52,9 +52,17 @@ a:hover {
   opacity: 0;
 }
 
+html , body {
+  min-height: 100%;
+  #app {
+    height: 100%;
+  }
+}
+
 //main-container全局样式
 .app-main{
   height: 100%;
+  overflow: auto;
 }
 
 .app-container {

@@ -27,14 +27,14 @@ export const constantRouterMap = [
     children: [{ path: 'dashboard', component: _import('dashboard/index') }]
   },
   {
-    path: '/example',
+    path: '/blog',
     component: Layout,
     redirect: 'noredirect',
-    name: 'Example',
+    name: 'Blog',
     icon: 'zujian',
     children: [
-      { path: 'index', name: 'Form', icon: 'zonghe', component: _import('page/form') },
-      { path: 'blog', name: 'blog', icon: 'zonghe', component: _import('page/writeBlog') }
+      { path: 'edit', name: 'edit', icon: 'zonghe', component: _import('page/writeBlog') },
+      { path: 'list', name: 'list', icon: 'zonghe', component: _import('page/articleList') }
     ]
   },
 

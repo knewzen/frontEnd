@@ -3,7 +3,7 @@ import md5 from 'md5'
 
 export function login(username, password) {
   return fetch({
-    url: '/users/login',
+    url: '/login',
     method: 'post',
     data: {
       username,

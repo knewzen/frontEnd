@@ -1,9 +1,9 @@
 <template>
     <div class="indexContainer">
-        <div class="btnsContainer">
+        <!--<div class="btnsContainer">
             <div class="btn" @click="getMdValueFn">获取mdValue</div>
             <div class="btn" @click="getHtmlValueFn">获取htmlValue</div>
-        </div>
+        </div>-->
         <div class="maskContainer" v-if="dilogStatus">
             <div class="contentContainer">
             <div class="closeBtnContainer" @click="closeMaskFn"></div>
@@ -183,8 +183,8 @@
     }
     
     .editorContainer {
-        width: 90%;
-        height: 90%;
+        width: 100%;
+        height: 100%;
         border: 1px solid #ddd;
     }
 </style>
