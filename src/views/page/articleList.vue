@@ -2,7 +2,7 @@
   <el-row class="articleList">
     <el-col class="articleItem" v-for="(article, index) in selfList" :key="article.id">
       <el-card :body-style="{ padding: '0px' }" class="card">
-        <img src="../../assets/blog/hamburger.png" class="image" @click="() => handleTurnToEdit(article)">
+        <img src="../../assets/blog/Vue.png" class="image" @click="() => handleTurnToEdit(article)">
         <div style="padding: 14px;">
           <span>{{ article.title }}</span>
           <div class="tags">

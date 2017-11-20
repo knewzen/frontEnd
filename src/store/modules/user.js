@@ -1,5 +1,6 @@
 import { login, logout, getInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
+import avatorImg from '@/assets/avator.jpg'
 
 const user = {
   state: {
@@ -47,7 +48,7 @@ const user = {
           const data = response.data
           commit('SET_NAME', data.nickname)
           commit('SET_ROLES', 'admin')
-          commit('SET_AVATAR', data.avatar || 'https://avatars1.githubusercontent.com/u/18207997?s=460&v=4')
+          commit('SET_AVATAR', data.avatar || avatorImg)
           resolve(response)
         }).catch(error => {
           reject(error)
