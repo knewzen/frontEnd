@@ -1,6 +1,3 @@
-/**
- * Created by jiachenpan on 16/11/18.
- */
 
  export function parseTime(time, cFormat) {
    if (arguments.length === 0) {
@@ -54,5 +51,23 @@
      return parseTime(time, option)
    } else {
      return d.getMonth() + 1 + '月' + d.getDate() + '日' + d.getHours() + '时' + d.getMinutes() + '分'
+   }
+ }
+
+ export function getTagType (tag) {
+   let value = tag.toLowerCase()
+   const tagMap = {
+     'vue': 'primary',
+     'react': 'warning',
+     'javascript': 'gray',
+     'html': 'gray',
+     'css': 'gray',
+     'nodejs': 'gray'
+   }
+   let result = tagMap[value]
+   if ( result === undefined) {
+     return 'gray'
+   } else {
+     return result
    }
  }

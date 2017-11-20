@@ -31,6 +31,7 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
     @import "src/styles/mixin.scss";
+    @import "../../styles/reset.css";
     .app-wrapper {
         @include clearfix;
         position: relative;

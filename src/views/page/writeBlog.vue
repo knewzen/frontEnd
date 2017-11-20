@@ -13,7 +13,7 @@
          文章标签：
         </el-col>
         <el-col :span="12">
-          <TagSelect @select="handleChangeTag" style="width: 100%;"></TagSelect>
+          <TagSelect :value="tags" @select="handleChangeTag" style="width: 100%;"></TagSelect>
         </el-col>
       </el-row>
       <el-row class="button item">
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
   import vueMarkDown from '@/components/markdown'
   import TagSelect from '@/components/TagSelect'
   export default {
@@ -34,6 +35,19 @@
     components: {
       vueMarkDown,
       TagSelect
+    },
+    computed: {
+      ...mapGetters([
+        'activeBlog'
+      ])
+    },
+    mounted () {
+      Object.keys(this.activeBlog).forEach(key => {
+        this[key] = this.activeBlog[key]
+        if (key === 'content') {
+          this.$refs.markdown.msg.mdValue = this.activeBlog[key]
+        }
+      })
     },
     data () {
       return {

@@ -2,6 +2,7 @@
   <el-select
     v-model="selectedList"
     multiple
+    :multiple-limit="4"
     filterable
     allow-create
     placeholder="请选择文章标签">
@@ -16,6 +17,9 @@
 
 <script>
   export default {
+    props: {
+      value: Array
+    },
     data() {
       return {
         options5: [{
@@ -40,7 +44,13 @@
         selectedList: []
       }
     },
+    mounted () {
+      this.selectedList = this.value || []
+    },
     watch: {
+      value (newValue) {
+        this.selectedList = newValue
+      },
       selectedList (newList) {
         this.$emit('select', newList)
       }

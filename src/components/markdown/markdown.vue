@@ -42,7 +42,7 @@
     import Vue from 'vue'
     import marked from 'marked'
     import scroll from 'vue-scroll'
-    import hljs from '@/assets/markdown/highlight.min.js'
+    import '@/assets/markdown/highlight.min.js'
     import range from '@/assets/markdown/rangeFn.js'
     Vue.use(scroll)
     marked.setOptions({
@@ -54,7 +54,7 @@
         sanitize: true,
         smartLists: true,
         smartypants: false,
-        highlight: function(code) {
+        highlight: function(code, lang, callback) {
             return hljs.highlightAuto(code).value
         }
     });
@@ -253,17 +253,8 @@
             },
             happyDay:function(){
                 window.open('https://github.com/ovenslove/vue-mdEditor');
-            }
-        },
-        computed: {
-            compiledMarkdown: function() {
-                return marked(this.input, {
-                    sanitize: true
-                })
-            }
-        },
-        watch: {
-            input: function() {
+            },
+            handleInput: function () {
                 let data = {};
                 data.mdValue = this.input;
                 data.htmlValue = marked(this.input, {
@@ -275,12 +266,26 @@
                 this.maxEditScrollHeight = maxEditScrollHeight
                 this.maxPreviewScrollHeight = maxPreviewScrollHeight
             }
+        },
+        computed: {
+            compiledMarkdown: function() {
+                return marked(this.input, {
+                    sanitize: true
+                })
+            }
+        },
+        watch: {
+            mdValuesP: function(value) {
+                this.input = value
+            },
+            input: function() {
+                this.handleInput()
+            }
         }
     }
 </script>
 
 <style lang="scss">
-    @import "../../styles/reset.css";
 
     /*引入github的markdown样式文件*/
     

@@ -2,12 +2,19 @@
   <el-row class="articleList">
     <el-col class="articleItem" v-for="(article, index) in selfList" :key="article.id">
       <el-card :body-style="{ padding: '0px' }" class="card">
-        <img src="../../assets/blog/hamburger.png" class="image" @click="handleTurnToEdit">
+        <img src="../../assets/blog/hamburger.png" class="image" @click="() => handleTurnToEdit(article)">
         <div style="padding: 14px;">
           <span>{{ article.title }}</span>
+          <div class="tags">
+            <el-tag v-for="tag in article.tags"
+              :key="tag"
+              :type="getTagType(tag)"
+            >
+              {{ tag }}
+            </el-tag>
+          </div>
           <div class="bottom clearfix">
             <time class="time">{{ currentDate }}</time>
-            <el-button type="text" class="button">操作按钮</el-button>
           </div>
         </div>
       </el-card>
@@ -17,7 +24,10 @@
 
 <script>
   import { mapGetters } from 'vuex'
-
+  import {
+    formatTime,
+    getTagType
+  } from '@/utils'
   export default {
     name: 'articleList',
     created () {
@@ -36,15 +46,21 @@
     data() {
       return {
         selfList: this.articleList,
-        currentDate: new Date()
+        currentDate: formatTime(new Date())
       };
     },
     methods: {
-      handleTurnToEdit () {
+      handleTurnToEdit (article) {
+        this.$store.commit('SET_ACTIVEBLOG', {
+          title: article.title,
+          tags: article.tags,
+          content: article.content
+        })
         this.$router.push({
           path: 'edit'
         })
-      }
+      },
+      getTagType
     }
   }
 </script>
@@ -53,9 +69,9 @@
 .articleList {
   padding: 24px;
   height: 100%;
-  overflow: auto;
+  box-sizing: border-box;
   .articleItem {
-    width: 25%;
+    width: 20%;
     padding: 12px;
   }
   .card {
@@ -71,10 +87,12 @@
     font-size: 13px;
     color: #999;
   }
-  
-  .bottom {
+  .bottom, .tags {
     margin-top: 13px;
     line-height: 12px;
+    & .el-tag {
+      margin: 6px 6px 0 0;
+    }
   }
 
   .button {

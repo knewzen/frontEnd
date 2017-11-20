@@ -5,11 +5,19 @@ import {
 
 const blog = {
   state: {
-    list: []
+    list: [],
+    activeBlog: {
+      title: '',
+      tags: [],
+      content: ''
+    }
   },
   mutations: {
     'SET_LIST': (state, newList) => {
       state.list = newList
+    },
+    'SET_ACTIVEBLOG': (state, blogData) => {
+      state.activeBlog = blogData
     }
   },
   actions: {
