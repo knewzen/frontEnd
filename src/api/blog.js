@@ -15,3 +15,11 @@ export function createBlog(data) {
     data: data
   })
 }
+
+export function updateBlog(data) {
+  return fetch({
+    url: '/blog/update',
+    method: 'post',
+    data: data
+  })
+}

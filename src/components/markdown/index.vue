@@ -33,7 +33,7 @@
                 msgShow:'我要显示的内容',
                 dilogStatus:false,
                 msg: {
-                    mdValue:'## Vue-markdownEditor'
+                    mdValue:'# 一级标题'
                 }
             }
         },

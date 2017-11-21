@@ -10,6 +10,7 @@ const getters = {
       tags: JSON.parse(item.tags)
     }
   }),
-  activeBlog: state => state.blog.activeBlog
+  activeBlog: state => state.blog.activeBlog,
+  isEditingBlog: state => state.blog.activeBlog.title !== undefined
 }
 export default getters

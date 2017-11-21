@@ -39,7 +39,11 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: vueLoaderConfig
+        options: Object.assign({}, vueLoaderConfig, {
+          postcss: [
+            require('postcss-flexible')({remUnit: 75})
+          ]
+        })
       },
       {
         test: /\.js$/,

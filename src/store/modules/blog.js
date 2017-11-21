@@ -1,15 +1,23 @@
 import {
   getBlogList,
-  createBlog
+  createBlog,
+  updateBlog
 } from '@/api/blog'
+
+import {
+  formatTime
+} from '@/utils'
 
 const blog = {
   state: {
     list: [],
     activeBlog: {
-      title: '',
-      tags: [],
-      content: ''
+      /**
+       * id: 0,
+       * title: '',
+       * tags: [],
+       * content: ''
+       */
     }
   },
   mutations: {
@@ -18,6 +26,9 @@ const blog = {
     },
     'SET_ACTIVEBLOG': (state, blogData) => {
       state.activeBlog = blogData
+    },
+    'RESET_ACTIVEBLOG': (state) => {
+      state.activeBlog = {}
     }
   },
   actions: {
@@ -26,7 +37,8 @@ const blog = {
         createBlog({
           title: title.trim(),
           tags,
-          content: JSON.stringify(content)
+          content: content,
+          editTime: formatTime(new Date())
         }).then(res => {
           resolve(res)
         })
@@ -39,6 +51,24 @@ const blog = {
         }).then(res => {
           commit('SET_LIST', res.data.list)
           resolve(res)
+        })
+      })
+    },
+    UpdateArticle ({ commit }, {
+      id,
+      title,
+      tags,
+      content
+    }) {
+      return new Promise((resolve, reject) => {
+        updateBlog({
+          id,
+          title,
+          tags: JSON.stringify(tags),
+          content,
+          editTime: formatTime(new Date())
+        }).then(res => {
+          debugger
         })
       })
     }

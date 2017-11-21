@@ -72,6 +72,7 @@ export default {
             left: 0;
             right: -17px;
             overflow-y: scroll;
+            overflow-x: hidden;
         }
         .main-container {
             height: 100%;

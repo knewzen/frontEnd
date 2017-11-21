@@ -38,14 +38,22 @@
     },
     computed: {
       ...mapGetters([
-        'activeBlog'
+        'activeBlog',
+        'isEditingBlog'
       ])
     },
+    beforeDestroy () {
+      this.$store.commit('RESET_ACTIVEBLOG')
+    },
     mounted () {
-      Object.keys(this.activeBlog).forEach(key => {
-        this[key] = this.activeBlog[key]
+      let activeBlog = this.activeBlog
+      if (activeBlog.title === undefined) {
+        return false
+      }
+      Object.keys(activeBlog).forEach(key => {
+        this[key] = activeBlog[key]
         if (key === 'content') {
-          this.$refs.markdown.msg.mdValue = this.activeBlog[key]
+          this.$refs.markdown.msg.mdValue = activeBlog[key]
         }
       })
     },
@@ -58,6 +66,22 @@
     },
     methods: {
       handleSubmit () {
+        if (this.isEditingBlog) {
+          this.handleUpdateBlog()
+        } else {
+          this.handleCreateBlog()
+        }
+      },
+      handleUpdateBlog () {
+        let data = this.activeBlog
+        this.$store.dispatch('UpdateArticle', {
+          id: data.id,
+          title: this.title,
+          content: this.$refs.markdown.msg.mdValue,
+          tags: this.tags
+        })
+      },
+      handleCreateBlog () {
         console.log('title: ', this.title)
         console.log('tags', JSON.stringify(this.tags))
         console.log('content: ', this.$refs.markdown.msg.mdValue)

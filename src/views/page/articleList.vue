@@ -52,12 +52,13 @@
     methods: {
       handleTurnToEdit (article) {
         this.$store.commit('SET_ACTIVEBLOG', {
+          id: article.id,
           title: article.title,
           tags: article.tags,
           content: article.content
         })
         this.$router.push({
-          path: 'edit'
+          path: `list/${article.id}`
         })
       },
       getTagType
