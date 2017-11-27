@@ -79,6 +79,8 @@
           title: this.title,
           content: this.$refs.markdown.msg.mdValue,
           tags: this.tags
+        }).then(res => {
+          this.$message.success('修改成功')
         })
       },
       handleCreateBlog () {

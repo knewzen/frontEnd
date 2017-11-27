@@ -5,7 +5,8 @@ import {
 } from '@/api/blog'
 
 import {
-  formatTime
+  formatTime,
+  parseTime
 } from '@/utils'
 
 const blog = {
@@ -66,9 +67,9 @@ const blog = {
           title,
           tags: JSON.stringify(tags),
           content,
-          editTime: formatTime(new Date())
+          editTime: parseTime(new Date())
         }).then(res => {
-          debugger
+          resolve(res)
         })
       })
     }
